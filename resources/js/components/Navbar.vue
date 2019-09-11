@@ -5,9 +5,9 @@
     </RouterLink>
     <div class="my-navbar-control">
       <div v-if="isLogin" class="my-navbar__item">
-        <button class="button">
+        <button class="button" @click="showForm = ! showForm">
           <i class="icon ion-md-add"></i>
-          tweet
+          ツイート
         </button>
       </div>
       <div v-if="isLogin" class="my-navbar__item">
@@ -25,11 +25,22 @@
         </RouterLink>
       </div>
     </div>
+    <TweetForm v-model="showForm" />
   </nav>
 </template>
 
 <script>
+import TweetForm from './TweetForm.vue'
+
 export default {
+  components: {
+    TweetForm
+  },
+  data () {
+    return {
+      showForm: false
+    }
+  },
   computed: {
     isLogin () {
       return this.$store.getters['auth/check']

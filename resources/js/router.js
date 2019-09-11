@@ -5,8 +5,9 @@ import VueRouter from 'vue-router'
 import TweetList from './pages/TweetList.vue'
 import Login from './pages/Login.vue'
 import Register from './pages/Register.vue'
-
 import store from './store'
+import SystemError from './pages/errors/System.vue'
+import TweetDetail from './pages/TweetDetail.vue'
 
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
@@ -32,6 +33,15 @@ const routes = [
   {
     path: '/register',
     component: Register
+  },
+  {
+    path: '/tweets/:id',
+    component: TweetDetail,
+    props: true
+  },
+  {
+    path: '/500',
+    component: SystemError
   }
 ]
 

@@ -3,6 +3,17 @@
     <div class="panel-heading">会員登録</div>
     <div class="panel-body">
       <form class="form" @submit.prevent="register">
+        <div v-if="registerErrors" class="errors">
+          <ul v-if="registerErrors.name">
+            <li v-for="msg in registerErrors.name" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="registerErrors.email">
+            <li v-for="msg in registerErrors.email" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="registerErrors.password">
+            <li v-for="msg in registerErrors.password" :key="msg">{{ msg }}</li>
+          </ul>
+        </div>
         <div class="form-group">
           <label for="email">メールアドレス</label>
           <input type="text" class="form-control" id="email" v-model="registerForm.email">
@@ -28,6 +39,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
@@ -39,14 +52,27 @@ export default {
       }
     }
   },
+  computed: mapState({
+    apiStatus: state => state.auth.apiStatus,
+    loginErrors: state => state.auth.loginErrorMessages,
+    registerErrors: state => state.auth.registerErrorMessages
+  }),
   methods: {
     async register () {
       // authストアのresigterアクションを呼び出す
       await this.$store.dispatch('auth/register', this.registerForm)
 
-      // トップページに移動する
-      this.$router.push('/')
+      if (this.apiStatus) {
+        // トップページに移動する
+        this.$router.push('/')
+      }
+    },
+    clearError () {
+      this.$store.commit('auth/setRegisterErrorMessages', null)
     }
+  },
+  created () {
+    this.clearError()
   }
 }
 </script>

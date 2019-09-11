@@ -3,6 +3,14 @@
     <div class="panel-heading">ログイン</div>
     <div class="panel-body">
       <form class="form" @submit.prevent="login">
+        <div v-if="loginErrors" class="errors">
+          <ul v-if="loginErrors.email">
+            <li v-for="msg in loginErrors.email" :key="msg">{{ msg }}</li>
+          </ul>
+          <ul v-if="loginErrors.password">
+            <li v-for="msg in loginErrors.password" :key="msg">{{ msg }}</li>
+          </ul>
+        </div>
         <div class="form-group">
           <label for="login-email">メールアドレス</label>
           <input type="text" class="form-control" id="login-email" v-model="loginForm.email">
@@ -20,6 +28,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data () {
     return {
@@ -29,14 +39,28 @@ export default {
       },
     }
   },
+  computed: {
+    ...mapState({
+      apiStatus: state => state.auth.apiStatus,
+      loginErrors: state => state.auth.loginErrorMessages
+    })
+  },
   methods: {
     async login () {
       // authストアのloginアクションを呼び出す
       await this.$store.dispatch('auth/login', this.loginForm)
 
-      // トップページに移動する
-      this.$router.push('/')
+      if (this.apiStatus) {
+        // トップページに移動する
+        this.$router.push('/')
+      }
     },
+    clearError () {
+      this.$store.commit('auth/setLoginErrorMessages', null)
+    }
+  },
+  created () {
+    this.clearError()
   }
 }
 </script>
