@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 // 会員登録
 Route::post('/register', 'Auth\RegisterController@register')->name('register');
 // ログイン
@@ -27,3 +23,9 @@ Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/user', function () {
     return Auth::user();
 })->name('user');
+
+// tweet投稿
+Route::post('/tweets', 'TweetController@create')->name('tweet.create');
+// tweet一覧
+// Route::get('/tweets', 'TweetController@index')->name('tweet.index');
+
