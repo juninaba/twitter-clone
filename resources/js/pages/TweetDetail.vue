@@ -42,7 +42,7 @@ export default {
     }
   },
   methods: {
-    async fetchPhoto () {
+    async fetchTweet () {
       const response = await axios.get(`/api/tweets/${this.id}`)
 
       if (response.status !== OK) {
@@ -56,7 +56,7 @@ export default {
   watch: {
     $route: {
       async handler () {
-        await this.fetchPhoto()
+        await this.fetchTweet()
       },
       immediate: true
     }

@@ -2424,8 +2424,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    fetchPhoto: function () {
-      var _fetchPhoto = _asyncToGenerator(
+    fetchTweet: function () {
+      var _fetchTweet = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var response;
@@ -2458,11 +2458,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this);
       }));
 
-      function fetchPhoto() {
-        return _fetchPhoto.apply(this, arguments);
+      function fetchTweet() {
+        return _fetchTweet.apply(this, arguments);
       }
 
-      return fetchPhoto;
+      return fetchTweet;
     }()
   },
   watch: {
@@ -2476,7 +2476,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               switch (_context2.prev = _context2.next) {
                 case 0:
                   _context2.next = 2;
-                  return this.fetchPhoto();
+                  return this.fetchTweet();
 
                 case 2:
                 case "end":
@@ -2543,8 +2543,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   methods: {
-    fetchPhotos: function () {
-      var _fetchPhotos = _asyncToGenerator(
+    fetchTweets: function () {
+      var _fetchTweets = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var response;
@@ -2577,11 +2577,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, this);
       }));
 
-      function fetchPhotos() {
-        return _fetchPhotos.apply(this, arguments);
+      function fetchTweets() {
+        return _fetchTweets.apply(this, arguments);
       }
 
-      return fetchPhotos;
+      return fetchTweets;
     }()
   },
   watch: {
@@ -2595,7 +2595,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               switch (_context2.prev = _context2.next) {
                 case 0:
                   _context2.next = 2;
-                  return this.fetchPhotos();
+                  return this.fetchTweets();
 
                 case 2:
                 case "end":
