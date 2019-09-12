@@ -14,7 +14,7 @@ class TweetController extends Controller
     public function __construct()
     {
         // 認証が必要
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index', 'show']);
     }
     /**
      * tweet一覧
@@ -44,5 +44,16 @@ class TweetController extends Controller
         // リソースの新規作成なので
         // レスポンスコードは201(CREATED)を返却する
         return response($tweet, 201);
+    }
+    /**
+     * tweet詳細
+     * @param String $id
+     * @return Tweet
+     */
+    public function show(string $id)
+    {
+        $tweet = Tweet::where('id', $id)->with(['owner'])->first();
+
+        return $tweet ?? abort(404);
     }
 }
