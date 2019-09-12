@@ -27,5 +27,5 @@ Route::get('/user', function () {
 // tweet投稿
 Route::post('/tweets', 'TweetController@create')->name('tweet.create');
 // tweet一覧
-// Route::get('/tweets', 'TweetController@index')->name('tweet.index');
+Route::get('/tweets', 'TweetController@index')->name('tweet.index');
 

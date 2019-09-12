@@ -14,7 +14,17 @@ class TweetController extends Controller
     public function __construct()
     {
         // 認証が必要
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index']);
+    }
+    /**
+     * tweet一覧
+     */
+    public function index()
+    {
+        $tweets = Tweet::with(['owner'])
+            ->orderBy(Tweet::CREATED_AT, 'desc')->paginate();
+
+        return $tweets;
     }
     /**
      * tweet投稿
