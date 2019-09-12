@@ -16,6 +16,14 @@
               {{ item.text }}
             </span>
           </div>
+          <div class="tweet__controls">
+            <button
+              class="tweet__action tweet__action--like"
+              title="Like tweet"
+            >
+              <i class="icon ion-md-heart"></i>12
+            </button>
+          </div>
         </RouterLink>
       </div>
     </nav>
@@ -34,10 +42,25 @@ export default {
 </script>
 
 <style scoped>
-  .rounded-circle {
-    display: inline;
+  .tweet__controls {
+    text-align: right;
   }
-  .tweet__overlay {
-    display: inline;
+  .tweet__action {
+    background: #fff;
+    border: 0;
+    border-radius: .25rem;
+    color: #222;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    line-height: 1;
+    margin-left: .25rem;
+    opacity: .8;
+    outline: none;
+    padding: .5em .75em;
+  }
+  .tweet--like .icon {
+    color: #e4406f;
+    margin-right: .5em;
   }
 </style>
