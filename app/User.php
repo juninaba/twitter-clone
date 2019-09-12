@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'id','email_verified_at', 'password', 'remember_token',
     ];
 
     /**
@@ -44,4 +44,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Tweet');
     }
+
+    protected $visible = [
+        'name', 'email',
+    ];
+
 }
