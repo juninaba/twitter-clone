@@ -28,4 +28,6 @@ Route::get('/user', function () {
 Route::post('/tweets', 'TweetController@create')->name('tweet.create');
 // tweet一覧
 Route::get('/tweets', 'TweetController@index')->name('tweet.index');
+// tweet詳細
+Route::get('/tweets/{id}', 'TweetController@show')->name('tweet.show');
 
