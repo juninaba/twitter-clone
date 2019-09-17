@@ -31,3 +31,6 @@ Route::get('/tweets', 'TweetController@index')->name('tweet.index');
 // tweet詳細
 Route::get('/tweets/{id}', 'TweetController@show')->name('tweet.show');
 
+// user詳細
+Route::get('/users/{id}', 'UserController@show')->name('user.show');
+

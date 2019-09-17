@@ -5,20 +5,7 @@
         <img src="" alt="icon" class="img-circle">
         <RouterLink
           class="tweet__overlay"
-          :to="`/users/${item.owner.id}`"
-          :title="`View the user detail`"
-          :item="item.owner"
-        >
-          <div class="list-group-item">
-            <span>
-              {{ item.owner.name }}さん
-            </span>
-          </div>
-        </RouterLink>
-        <RouterLink
-          class="tweet__overlay"
           :to="`/tweets/${item.id}`"
-          :title="`View the tweet by ${item.owner.name}`"
         >
           <div class="list-group-item">
             <span>

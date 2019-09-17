@@ -1,5 +1,5 @@
 <template>
-  <div class="photo-list">
+  <div class="tweet-list">
     <div class="grid">
       <Tweet
         class="grid__item"

@@ -1,28 +1,26 @@
 <template>
-  <div v-if="tweet" class="photo-detail">
-    <!-- <div class="col"> -->
-      <nav class="panel panel-default">
-        <div class="list-group">
-          <img src="" alt="icon" class="img-circle">
-            <div class="list-group-item">
-              <span>
-                {{ tweet.owner.name }}さん
-              </span>
-              <span>
-                {{ tweet.text }}
-              </span>
-            </div>
-            <div class="tweet__controls">
-              <button
-                class="tweet__action tweet__action--like"
-                title="Like tweet"
-              >
-                <i class="icon ion-md-heart"></i>12
-              </button>
-            </div>
-        </div>
-      </nav>
-    <!-- </div> -->
+  <div v-if="tweet" class="tweet-detail">
+    <nav class="panel panel-default">
+      <div class="list-group">
+        <img src="" alt="icon" class="img-circle">
+          <div class="list-group-item">
+            <span>
+              {{ tweet.owner.name }}さん
+            </span>
+            <span>
+              {{ tweet.text }}
+            </span>
+          </div>
+          <div class="tweet__controls">
+            <button
+              class="tweet__action tweet__action--like"
+              title="Like tweet"
+            >
+              <i class="icon ion-md-heart"></i>12
+            </button>
+          </div>
+      </div>
+    </nav>
   </div>
 </template>
 
