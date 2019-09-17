@@ -11,12 +11,21 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * リレーションシップ - tweetsテーブル
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tweets()
+    {
+        return $this->hasMany('App\Tweet');
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'tweets'
     ];
 
     /**
@@ -25,7 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'id','email_verified_at', 'password', 'remember_token',
+        'email_verified_at', 'password', 'remember_token',
     ];
 
     /**
@@ -36,17 +45,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    /**
-     * リレーションシップ - tweetsテーブル
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function tweets()
-    {
-        return $this->hasMany('App\Tweet');
-    }
 
     protected $visible = [
-        'name', 'email',
+        'id', 'name', 'email', 'tweets',
     ];
 
 }
