@@ -8,6 +8,7 @@ import Register from './pages/Register.vue'
 import store from './store'
 import SystemError from './pages/errors/System.vue'
 import TweetDetail from './pages/TweetDetail.vue'
+import UserDetail from './pages/UserDetail.vue'
 
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
@@ -37,6 +38,11 @@ const routes = [
   {
     path: '/tweets/:id',
     component: TweetDetail,
+    props: true
+  },
+  {
+    path: '/users/:id',
+    component: UserDetail,
     props: true
   },
   {
