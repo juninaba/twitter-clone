@@ -33,4 +33,8 @@ Route::get('/tweets/{id}', 'TweetController@show')->name('tweet.show');
 
 // user詳細
 Route::get('/users/{id}', 'UserController@show')->name('user.show');
+// user編集
+Route::get('/users/{id}/edit', 'UserController@edit')->name('user.edit');
+// user保存
+Route::post('/users/{id}/update', 'UserController@update')->name('user.update');
 
