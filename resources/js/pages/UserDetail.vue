@@ -3,11 +3,21 @@
     <nav class="panel panel-default">
       <div class="list-group">
         <img src="" alt="icon" class="img-circle">
+        <div class="list-group-item">
+          <span>
+            {{ user.name }}さん
+          </span>
+        </div>
+        <RouterLink
+          class="tweet__overlay"
+          :to="`/users/${user.id}/edit`"
+        >
           <div class="list-group-item">
             <span>
-              {{ user.name }}さん
+              編集
             </span>
           </div>
+        </RouterLink>
       </div>
     </nav>
     <div class="tweet-list">
