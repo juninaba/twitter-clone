@@ -2,13 +2,12 @@
   <div v-if="item" class="col">
     <nav class="panel panel-default">
       <div class="list-group">
-        <img src="" alt="icon" class="img-circle">
         <RouterLink
           class="tweet__overlay"
           :to="`/tweets/${item.id}`"
         >
           <div class="list-group-item">
-            <span>
+            <span class="text">
               {{ item.text }}
             </span>
           </div>
@@ -38,6 +37,9 @@ export default {
 </script>
 
 <style scoped>
+  .text {
+    color: #434a54;
+  }
   .tweet__controls {
     text-align: right;
   }
