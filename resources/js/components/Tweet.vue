@@ -2,7 +2,6 @@
   <div v-if="item" class="col">
     <nav class="panel panel-default">
       <div class="list-group">
-        <img src="" alt="icon" class="img-circle">
         <RouterLink
           class="tweet__overlay"
           :to="`/users/${item.owner.id}`"
@@ -10,7 +9,7 @@
           :item="item.owner"
         >
           <div class="list-group-item">
-            <span>
+            <span class="name">
               {{ item.owner.name }}さん
             </span>
           </div>
@@ -21,7 +20,7 @@
           :title="`View the tweet by ${item.owner.name}`"
         >
           <div class="list-group-item">
-            <span>
+            <span class="text">
               {{ item.text }}
             </span>
           </div>
@@ -51,6 +50,15 @@ export default {
 </script>
 
 <style scoped>
+  .name {
+    color: #434a54;
+  }
+  .name:hover {
+    text-decoration: underline;
+  }
+  .text {
+    color: #434a54;
+  }
   .tweet__controls {
     text-align: right;
   }

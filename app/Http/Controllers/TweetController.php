@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTweet;
 use App\Tweet;
+use App\FollowUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use SebastianBergmann\Environment\Console;
 
 class TweetController extends Controller
 {
@@ -22,9 +24,10 @@ class TweetController extends Controller
     public function index()
     {
         $tweets = Tweet::with(['owner'])
-            ->orderBy(Tweet::CREATED_AT, 'desc')->paginate();
+        ->orderBy(Tweet::CREATED_AT, 'desc')->paginate();
 
         return $tweets;
+        
     }
     /**
      * tweet投稿

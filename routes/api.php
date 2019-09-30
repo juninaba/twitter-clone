@@ -37,4 +37,12 @@ Route::get('/users/{id}', 'UserController@show')->name('user.show');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('user.edit');
 // user保存
 Route::post('/users/{id}/update', 'UserController@update')->name('user.update');
+// follow
+Route::get('/users/{id}/follow', 'UserController@follow')->name('user.follow');
+// followed
+Route::get('/users/{id}/followed', 'UserController@followed')->name('user.followed');
+
+// フォローする
+Route::post('/follow-users', 'FollowUserController@store');
+Route::delete('/follow-users/{id}', 'FollowUserController@destroy');
 

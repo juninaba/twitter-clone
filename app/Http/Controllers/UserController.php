@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FollowUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = User::where('id', $id)->with(['tweets'])->first();
+        $user = User::where('id', $id)->with(['tweets'],['followCount'],['followedCount'])->first();
 
         return $user ?? abort(404);
     }
@@ -52,5 +53,37 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->save();
         return response($user, 201);
+    }
+    
+    /**
+     * follow
+     * @param string $id
+     * @return User
+     */
+    public function follow(string $id)
+    {
+        $user = Auth::user();
+        $follow_users = FollowUser::where('user_id', $user->id)->get();
+        foreach ($follow_users as $user) {
+            $users[] = User::where('id', $user->followed_user_id)->get();
+        }
+
+        return $users;
+    }
+
+    /**
+     * followed
+     * @param string $id
+     * @return User
+     */
+    public function followed(string $id)
+    {
+        $user = Auth::user();
+        $followed_users = FollowUser::where('followed_user_id', $user->id)->get();
+        foreach ($followed_users as $user) {
+            $users[] = User::where('id', $user->user_id)->get();
+        }
+
+        return $users;
     }
 }

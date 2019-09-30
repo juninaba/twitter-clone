@@ -19,13 +19,34 @@ class User extends Authenticatable
         return $this->hasMany('App\Tweet');
     }
 
+    public function followUsers()
+    {
+        return $this->belongsToMany(self::class, 'follow_users', 'user_id', 'followed_user_id')
+            ->using(FollowUser::class);
+    }
+
+    public function followCount()
+    {
+        $current = Auth::user()->id;
+        // $follow_count = FollowUser::where('user_id', $current)->count()->get();
+        // return $follow_count;
+        return $this->FollowUser::where('user_id', $current)->count()->get();
+    }
+
+    public function followedCount()
+    {
+        $current = Auth::user()->id;
+        $followed_count = FollowUser::where('followed_user_id', $current)->count()->get();
+        return $followed_count;
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'tweets'
+        'name', 'email', 'password', 'tweets', 'followCount', 'followedCount'
     ];
 
     /**
@@ -47,7 +68,7 @@ class User extends Authenticatable
     ];
 
     protected $visible = [
-        'id', 'name', 'email', 'tweets',
+        'id', 'name', 'email', 'tweets', 'followCount', 'followedCount'
     ];
 
 }

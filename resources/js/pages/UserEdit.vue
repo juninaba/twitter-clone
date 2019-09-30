@@ -1,5 +1,5 @@
 <template>
-  <div v-if="user">
+  <div v-if="user.id == userid">
     <nav class="panel panel-default">
       <div class="panel-heading">プロフィール編集</div>
       <div class="panel-body">
@@ -60,6 +60,11 @@ export default {
       },
       immediate: true
     }
+  },computed: {
+    userid () {
+      return this.$store.getters['auth/userid']
+    }
   }
+
 }
 </script>

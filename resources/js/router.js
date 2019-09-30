@@ -10,6 +10,8 @@ import SystemError from './pages/errors/System.vue'
 import TweetDetail from './pages/TweetDetail.vue'
 import UserDetail from './pages/UserDetail.vue'
 import UserEdit from './pages/UserEdit.vue'
+import Follow from './pages/Follow.vue'
+import Followed from './pages/Followed.vue'
 
 // VueRouterプラグインを使用する
 // これによって<RouterView />コンポーネントなどを使うことができる
@@ -49,6 +51,16 @@ const routes = [
   {
     path: '/users/:id/edit',
     component: UserEdit,
+    props: true
+  },
+  {
+    path: '/users/:id/follow',
+    component: Follow,
+    props: true
+  },
+  {
+    path: '/users/:id/followed',
+    component: Followed,
     props: true
   },
   {
