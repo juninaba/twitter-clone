@@ -44,5 +44,6 @@ Route::get('/users/{id}/followed', 'UserController@followed')->name('user.follow
 
 // フォローする
 Route::post('/follow-users', 'FollowUserController@store');
+
 Route::delete('/follow-users/{id}', 'FollowUserController@destroy');
 
